@@ -5,11 +5,9 @@ const { app, server } = require('../server');
 const mongoose = require('mongoose');
 
 let mongod;
-
 beforeAll(async () => {
   mongod = await MongoMemoryServer.create();
   process.env.MONGO_URL = mongod.getUri();
-  console.log(process.env.MONGO_URL)
 });
 
 afterAll(async () => {
