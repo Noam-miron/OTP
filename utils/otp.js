@@ -32,7 +32,7 @@ async function generateOTP() {
     }
     
     const temperatures = await Promise.all(selected_cities.map(city => getTemperature(city)));
-    const otp = createOTP(temperatures);
+    const otp = mergeTemps(temperatures);
 
     return otp;
 }
@@ -47,7 +47,7 @@ async function getTemperature(city) {
     }
   }
   
-  function createOTP(temperatures) {
+  function mergeTemps(temperatures) {
     // Extract the positive, integer part of each temperature and pad it to 2 digits
     const otpDigits = temperatures.map(temp => String(Math.abs(Math.trunc(temp))).padStart(2, '0'));
     return otpDigits.join('')
