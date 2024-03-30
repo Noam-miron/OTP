@@ -1,19 +1,17 @@
 const request = require('supertest');
-const { MongoMemoryServer } = require('mongodb-memory-server');
 const dotenv = require('dotenv').config();
-const { app, server } = require('../server');
-const mongoose = require('mongoose');
+const app = require('../app');
+const { setupMongoMemoryServer, teardownMongoMemoryServer } = require('./testSetup');
 
 let mongod;
+
 beforeAll(async () => {
-  mongod = await MongoMemoryServer.create();
-  process.env.MONGO_URL = mongod.getUri();
+  mongod = await setupMongoMemoryServer();
+  
 });
 
 afterAll(async () => {
-  await mongoose.disconnect();
-  await mongod.stop();
-  await server.close();
+  await teardownMongoMemoryServer();
 });
 
 jest.mock('../utils/otp', () => ({
