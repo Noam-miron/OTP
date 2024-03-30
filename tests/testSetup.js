@@ -17,7 +17,8 @@ async function setupMongoMemoryServer() {
   return mongod;
 }
 
-async function teardownMongoMemoryServer() {
+async function teardownMongoMemoryServer(mongod) {
+  await mongoose.disconnect();
   if (mongod) {
     await mongod.stop();
   }

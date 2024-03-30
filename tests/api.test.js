@@ -7,11 +7,10 @@ let mongod;
 
 beforeAll(async () => {
   mongod = await setupMongoMemoryServer();
-  
 });
 
 afterAll(async () => {
-  await teardownMongoMemoryServer();
+  await teardownMongoMemoryServer(mongod);
 });
 
 jest.mock('../utils/otp', () => ({
