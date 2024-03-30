@@ -16,7 +16,7 @@ npm install
  ```
 To install all dependencies.
 
-To run tests you will need to create a .env file with  MONGO_SEED_USER = 'any@email.com' so that the mocked DB will assert correctly.
+To run tests you will need to create a .env file with ``` MONGO_SEED_USER = 'any@email.com' ``` so that the mocked DB will assert correctly.
 After which you can run the command to run the functional(api) tests:
 ``` code
 npm test
