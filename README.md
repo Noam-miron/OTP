@@ -16,20 +16,20 @@ npm install
  ```
 To install all dependencies.
 
-To run tests you will need at least a seeded MongoDB instance and the 2 related environment variables in the .env file(MONGOOSE_URL, MONGO_SEED_USER).
-To seed the DB Run the command in the repository root:
-``` code
-node .\seedDB\seed.js
-```
-
-Run the functional(api) tests:
+To run tests you will need to create a .env file with  MONGO_SEED_USER = 'any@email.com' so that the mocked DB will assert correctly.
+After which you can run the command to run the functional(api) tests:
 ``` code
 npm test
 ```
-(No need to set up API keys for the tests as they mock the relevant parts).
+(No need to set up MongoDB or API keys for the tests as they mock the relevant parts).
 
-If you want to run the React app to test it you will need to have a valid SendGrid API key and sender email, a weatherapi API key and a MongoDB instance.
+If you want to run the React app and interact with the NodeJS server you will need to have a valid SendGrid API key and sender email, a weatherapi API key and a MongoDB instance.
 Fill the relevant fields in the .env file (For local React instance you can fill the FRONT_DOMAIN = 'http://localhost:3000')
+
+If you want to seed the DB to test a correct sending in case of registered user run the following command in the repository root after creating .env file with the relevant fields:
+``` code
+node .\seedDB\seed.js
+```
 
 Start the Server and Front:
 ``` code
